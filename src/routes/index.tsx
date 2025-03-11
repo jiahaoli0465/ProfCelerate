@@ -38,14 +38,14 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/about',
     element: <Layout />,
     children: [
       {
         index: true,
-        element: <Home />,
-      },
-      {
-        path: 'about',
         element: <About />,
       },
     ],
