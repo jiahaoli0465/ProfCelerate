@@ -479,7 +479,7 @@ export const GradedSubmissionsPage: React.FC = () => {
                           >
                             {submission.totalPoints
                               ? `${submission.totalScore} / ${submission.totalPoints}`
-                              : `${submission.totalScore}%`}
+                              : `${submission.totalScore}`}
                           </Badge>
                         </div>
                       </div>
@@ -594,10 +594,10 @@ export const GradedSubmissionsPage: React.FC = () => {
                                 <Badge
                                   variant={getScoreVariant(result.score)}
                                   className={`cursor-pointer ${getScoreColor(
-                                    result.score
+                                    80
                                   )}`}
                                 >
-                                  {result.score}%
+                                  {result.score}
                                 </Badge>
                               </div>
                               <p className="text-gray-600 mb-2 whitespace-pre-line">

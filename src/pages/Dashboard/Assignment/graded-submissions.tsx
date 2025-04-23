@@ -132,7 +132,7 @@ export const GradedSubmissions: React.FC<GradedSubmissionsProps> = ({
                       submission.totalScore >= 70 ? 'default' : 'destructive'
                     }
                   >
-                    Score: {submission.totalScore}%
+                    Score: {submission.totalScore}
                   </Badge>
                   <Button
                     variant="ghost"
@@ -178,7 +178,7 @@ export const GradedSubmissions: React.FC<GradedSubmissionsProps> = ({
                                 result.score >= 70 ? 'default' : 'destructive'
                               }
                             >
-                              {result.score}%
+                              {result.score}
                             </Badge>
                           </div>
                           <p className="text-gray-600 mb-2">
