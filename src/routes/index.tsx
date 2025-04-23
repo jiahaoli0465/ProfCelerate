@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // Layout
 import Layout from './Layout';
@@ -38,17 +39,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: 'about',
-        element: <About />,
-      },
-    ],
+    element: <Navigate to="/dashboard" replace />,
+  },
+  {
+    path: '/about',
+    element: (
+      <Layout>
+        <About />
+      </Layout>
+    ),
   },
   {
     path: '/dashboard',
