@@ -182,35 +182,32 @@ export const FileUploadForm: React.FC<FileUploadFormProps> = ({
 
         // Convert JSON objects to text files
         const files = jsonData.map((item, index) => {
-          // Create a formatted text content for each student response
-          const studentName = `${item.firstname || ''} ${
-            item.lastname || ''
-          }`.trim();
+          // Extract first name and last name for file naming only
           const lastName = item.lastname || '';
           const firstName = item.firstname || '';
+          const studentName = `${firstName || ''} ${lastName || ''}`.trim();
 
-          // Collect all response fields
-          const responses: string[] = [];
+          // Collect all fields dynamically with no filtering
+          const fieldLines: string[] = [];
+
+          // Add student name as the first line if available
+          if (studentName) {
+            fieldLines.push(`Student: ${studentName}`);
+          }
+
+          // Add all fields from the JSON object directly
           Object.keys(item).forEach((key) => {
-            if (key.startsWith('response') && item[key]) {
-              responses.push(`${key}: ${item[key]}`);
+            // Skip firstname and lastname as they're already in the Student line
+            if (key !== 'firstname' && key !== 'lastname') {
+              fieldLines.push(`${key}: ${item[key] || ''}`);
             }
           });
 
-          // Format the content
-          const content = [
-            `Student: ${studentName}`,
-            `Email: ${item.emailaddress || ''}`,
-            `Status: ${item.status || ''}`,
-            `Submitted: ${item.completed || ''}`,
-            `Duration: ${item.duration || ''}`,
-            '',
-            '--- Responses ---',
-            ...responses,
-          ].join('\n');
+          // Join all lines into a single string
+          const contentString = fieldLines.join('\n');
 
-          // Create a File object with LastnameFirstname.txt format
-          const blob = new Blob([content], { type: 'text/plain' });
+          // Create a File object
+          const blob = new Blob([contentString], { type: 'text/plain' });
 
           // Generate filename in LastnameFirstname.txt format
           // Handle duplicates by adding attempt number
