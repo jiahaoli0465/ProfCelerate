@@ -1,9 +1,2 @@
-work in progress
-
-if you want to run the project, you need to install the dependencies and run the project.
-
-pnpm i
-
-pnpm dev
-
-ofc u dont get the supabase credentials
+The chinese teacher used it.
+Said if we keep using this the TA wouldn't get paid much... since grading homeworks was majority of their pay
